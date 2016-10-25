@@ -5,17 +5,40 @@ public void setup()
 }
 public void draw() 
 {
-  //your code here
+  
+//your code here
 }
-class SpaceShip //extends Floater  
-{   
-    //your code here
+class SpaceShip extends Floater  
+{  
+  public Spaceship()
+  {
+     corners= 4;
+
+xCorners = new int[corners];
+
+yCorners = new int[corners];
+xCorners[0] =4;
+yCorners[0] = 0;
+xCorners[1] = -12;
+yCorners[1] = 16;
+xCorners[2] = -4;
+yCorners[2] = 0;
+xCorners[3] =-12;
+yCorners[3] = -16;
+  myColor =255;
+  }
+  
 }
+  public void show()
+  {
+ //your code here
+}
+
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
-  protected int corners;  //the number of corners, a triangular floater has 3   
-  protected int[] xCorners;   
-  protected int[] yCorners;   
+  protected int corners;  //the number of corners, a triangular floater has 3  used 
+  protected int[] xCorners; //done   
+  protected int[] yCorners;  //done 
   protected int myColor;   
   protected double myCenterX, myCenterY; //holds center coordinates   
   protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
