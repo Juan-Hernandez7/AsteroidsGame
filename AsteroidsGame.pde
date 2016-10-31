@@ -1,33 +1,53 @@
-//your variable declarations here
+ SpaceShip clarence = new SpaceShip();//your variable declarations here
 public void setup() 
 {
-  //your code here
+   //your code here
 }
 public void draw() 
 {
-  
+  clarence.show();
 //your code here
 }
 class SpaceShip extends Floater  
-{  
-  public Spaceship()
-  {
-     corners= 4;
+{  private int corners; 
+private int[] xCorners = new int[corners];
+private int[] yCorners = new int [corners];
+private int myColor = 255;
+private double myCenterX, myCenterY;
+private double myDirectionX, myDirectionY;
+private double myPointDirection;
+ public SpaceShip()
+ {  
+  corners=4;
+  xCorners = new int[corners];
+  yCorners = new int [corners];
+xCorners[0]=4;
+yCorners[0]=0;
+xCorners[1]=-12;
+yCorners[1]=16;
+xCorners[2]=-4;
+yCorners[2]=0;
+xCorners[3]=-12;
+yCorners[3]=-16;
+  myCenterX=250;
+  myCenterY=250;
+  myPointDirection=0;
+  myDirectionX=0;
+  myDirectionY=0;
 
-xCorners = new int[corners];
 
-yCorners = new int[corners];
-xCorners[0] =4;
-yCorners[0] = 0;
-xCorners[1] = -12;
-yCorners[1] = 16;
-xCorners[2] = -4;
-yCorners[2] = 0;
-xCorners[3] =-12;
-yCorners[3] = -16;
-  myColor =255;
   }
-  
+   public void setX(int x){ myCenterX=x;} 
+   public int getX(){return (int) myCenterX;}  
+   public void setY(int y){myCenterY=y;}  
+   public int getY(){return (int) myCenterY;}   
+   public void setDirectionX(double x){myDirectionX=x;}   
+   public double getDirectionX(){return (double)myDirectionX;}   
+   public void setDirectionY(double y){ myDirectionY=y;}   
+   public double getDirectionY(){return (double) myDirectionY;}   
+   public void setPointDirection(int degrees){myPointDirection=degrees;}   
+   public double getPointDirection(){return (int) myPointDirection;} 
+
 }
   public void show()
   {
@@ -39,7 +59,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   protected int corners;  //the number of corners, a triangular floater has 3  used 
   protected int[] xCorners; //done   
   protected int[] yCorners;  //done 
-  protected int myColor;   
+  protected int myColor; //done  
   protected double myCenterX, myCenterY; //holds center coordinates   
   protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
   protected double myPointDirection; //holds current direction the ship is pointing in degrees    
