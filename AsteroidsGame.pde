@@ -1,10 +1,11 @@
  SpaceShip clarence = new SpaceShip();//your variable declarations here
 public void setup() 
-{
-   //your code here
+{ 
+   size(500,500);//your code here
 }
 public void draw() 
-{
+{ background(0);
+  clarence.keyPressed();
   clarence.show();
 //your code here
 }
@@ -12,30 +13,29 @@ class SpaceShip extends Floater
 {  private int corners; 
 private int[] xCorners = new int[corners];
 private int[] yCorners = new int [corners];
-private int myColor = 255;
+private int myColor;
 private double myCenterX, myCenterY;
 private double myDirectionX, myDirectionY;
 private double myPointDirection;
  public SpaceShip()
  {  
-  corners=4;
+  corners = 4;
   xCorners = new int[corners];
   yCorners = new int [corners];
-xCorners[0]=4;
-yCorners[0]=0;
-xCorners[1]=-12;
-yCorners[1]=16;
-xCorners[2]=-4;
-yCorners[2]=0;
-xCorners[3]=-12;
-yCorners[3]=-16;
+xCorners[0]=274;
+yCorners[0]=250;
+xCorners[1]=220;
+yCorners[1]=220;
+xCorners[2]= 250;
+yCorners[2]=250;
+xCorners[3]=220;
+yCorners[3]=280;
   myCenterX=250;
   myCenterY=250;
   myPointDirection=0;
   myDirectionX=0;
   myDirectionY=0;
-
-
+  myColor=255;
   }
    public void setX(int x){ myCenterX=x;} 
    public int getX(){return (int) myCenterX;}  
@@ -48,12 +48,32 @@ yCorners[3]=-16;
    public void setPointDirection(int degrees){myPointDirection=degrees;}   
    public double getPointDirection(){return (int) myPointDirection;} 
 
-}
+
   public void show()
-  {
- //your code here
+
+  { 
+     stroke(255,255,255);
+    fill(255,255,255);
+    beginShape();
+    vertex(xCorners[0],yCorners[0]);
+    vertex(xCorners[1],yCorners[1]);
+    vertex(xCorners[2],yCorners[2]);
+    vertex(xCorners[3],yCorners[3]);
+    endShape(CLOSE);
+  //your code here
 }
 
+public void keyPressed()
+{
+  if (key=='3') //hyper
+    {  
+      clarence.setX((int)(Math.random()*500));
+      clarence.setY((int)(Math.random()*500));
+      
+      }
+}
+
+}
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3  used 
