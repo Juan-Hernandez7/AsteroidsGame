@@ -1,23 +1,30 @@
  SpaceShip clarence = new SpaceShip();
+ Stars [] dots = new Stars [200];
 //your variable declarations here
 public void setup() 
 { 
    size(1000,1000);//your code here
+ for(int i=0; i<dots.length; i++)
+  {  dots[i]= new Stars();}
 }
 public void draw() 
 { background(0);
+   for(int i=0; i<dots.length; i++)
+  { dots[i].show();
+  }
   clarence.show();
    clarence.move();
+
 }
  public void keyPressed()
  {
   
     if (keyCode == RIGHT) 
-      {clarence.rotate(20);}       
+      {clarence.rotate(24);}       
      else if(keyCode==LEFT)
-     {clarence.rotate(-20);}   
+     {clarence.rotate(-24);}   
    else if (keyCode==UP)
-    {clarence.accelerate(.5);}
+    {clarence.accelerate(.7);}
     else if (keyCode==DOWN)
       {
         clarence.setY((int)(Math.random()*900));
@@ -26,37 +33,39 @@ public void draw()
         clarence.setDirectionY(0);
         clarence.setPointDirection((int)(Math.random()*360));
       }
-    
 
  }
- class Stars
- { int theX,theY
+
+
+
+ public class Stars
+ { int theX,theY;
   public Stars()
   {
-    theX=x;
-    theY=y
+    theX=((int)(Math.random()*1000));
+    theY=((int)(Math.random()*1000));
   }
-  void show ()
+  public void show ()
   {
-    ellipse(theX,theY,10,10);
+    ellipse(theX,theY,5,5);
   }
  }
 
-class SpaceShip extends Floater  
+public class SpaceShip extends Floater  
 {  
  public SpaceShip()
  {  
   corners = 4;
   xCorners = new int[corners];
   yCorners = new int [corners];
-xCorners[0]=5;
+xCorners[0]=10;
 yCorners[0]=0;
-xCorners[1]=-8;
-yCorners[1]=-10;
-xCorners[2]= -5;
+xCorners[1]=-16;
+yCorners[1]=-20;
+xCorners[2]= -10;
 yCorners[2]=0;
-xCorners[3]=-8;
-yCorners[3]=10;
+xCorners[3]=-16;
+yCorners[3]=20;
   myCenterX=500;
   myCenterY=500;
   myPointDirection=0;
