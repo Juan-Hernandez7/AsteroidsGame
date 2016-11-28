@@ -1,5 +1,6 @@
  SpaceShip clarence = new SpaceShip();
  Stars [] dots = new Stars [200];
+ Asteroid roids = new Asteroid();
 //your variable declarations here
 public void setup() 
 { 
@@ -14,7 +15,7 @@ public void draw()
   }
   clarence.show();
    clarence.move();
-
+   roids.show();
 }
  public void keyPressed()
  {
@@ -39,7 +40,8 @@ public void draw()
 
 
  public class Stars
- { int theX,theY;
+ { 
+  private int theX,theY;
   public Stars()
   {
     theX=((int)(Math.random()*1000));
