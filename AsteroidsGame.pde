@@ -1,24 +1,24 @@
  SpaceShip clarence = new SpaceShip();
  Stars [] dots = new Stars [200];
- Asteroid [] roids = new Asteroid[15];
+ ArrayList <Asteroid> roids = new ArrayList <Asteroid>();
 //your variable declarations here
 public void setup() 
 { 
    size(1000,1000);//your code here
  for(int i=0; i<dots.length; i++)
   {  dots[i]= new Stars();}
-for(int nI=0; nI<roids.length;nI++)
-    {roids[nI]= new Asteroid();}
+for(int nI=0; nI<20;nI++)
+    {roids.add(new Asteroid());}
 }
 public void draw() 
 { background(0);
    for(int i=0; i<dots.length; i++)
   { dots[i].show();
   }
-for(int nI=0; nI<roids.length;nI++)
+for(int nI=0; nI<20;nI++)
     {
-      roids[nI].show();
-      roids[nI].move();
+      roids.get(nI).show();
+      roids.get(nI).move();
     }
   clarence.show();
   clarence.move();
