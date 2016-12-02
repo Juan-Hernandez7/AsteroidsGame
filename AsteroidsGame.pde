@@ -9,6 +9,7 @@ public void setup()
   {  dots[i]= new Stars();}
 for(int nI=0; nI<20;nI++)
     {roids.add(new Asteroid());}
+  
 }
 public void draw() 
 { background(0);
@@ -20,8 +21,10 @@ for(int nI=0; nI<20;nI++)
       roids.get(nI).show();
       roids.get(nI).move();
     }
+
   clarence.show();
   clarence.move();
+
 
 
 }
