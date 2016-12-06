@@ -9,25 +9,32 @@ public void setup()
   {  dots[i]= new Stars();}
 for(int nI=0; nI<20;nI++)
     {roids.add(new Asteroid());}
-  
+
 }
+private float  tooClose;
 public void draw() 
 { background(0);
    for(int i=0; i<dots.length; i++)
   { dots[i].show();
   }
-for(int nI=0; nI<20;nI++)
+for(int nI=0; nI<roids.size();nI++)
     {
       roids.get(nI).show();
       roids.get(nI).move();
     }
-
   clarence.show();
   clarence.move();
-
-
+   for(int i=0; i<20;i++)
+{  tooClose = dist(clarence.getX(), clarence.getY(),roids.get(i).getX(),roids.get(i).getY());
+   if(tooClose<=20)
+    {
+      roids.remove(i);
+     roids.add(new Asteroid());
+   }
 
 }
+    }
+
  public void keyPressed()
  {
   
