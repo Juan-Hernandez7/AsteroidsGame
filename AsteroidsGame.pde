@@ -1,7 +1,7 @@
  SpaceShip clarence = new SpaceShip();
  Stars [] dots = new Stars [200];
  ArrayList <Asteroid> roids = new ArrayList <Asteroid>();
-//your variable declarations here
+  Arraylist <Bullets> joe= new Arraylist <Bullets>();//your variable declarations here
 public void setup() 
 { 
    size(1000,1000);//your code here
@@ -11,34 +11,38 @@ for(int nI=0; nI<20;nI++)
     {roids.add(new Asteroid());}
 
 }
+
 private float  tooClose;
 public void draw() 
-{ background(0);
+{  
+  background(0);
    for(int i=0; i<dots.length; i++)
-  { dots[i].show();
-  }
+  {dots[i].show();}
 for(int nI=0; nI<roids.size();nI++)
     {
       roids.get(nI).show();
       roids.get(nI).move();
     }
-  clarence.show();
-  clarence.move();
-   for(int i=0; i<20;i++)
-{  tooClose = dist(clarence.getX(), clarence.getY(),roids.get(i).getX(),roids.get(i).getY());
+    for(int i=0; i<roids.size();i++)
+    {
+      tooClose = dist(clarence.getX(), clarence.getY(),roids.get(i).getX(),roids.get(i).getY());
    if(tooClose<=20)
     {
       roids.remove(i);
      roids.add(new Asteroid());
-   }
+    }
+  }
+  joe.show();
+  joe.move();
+  clarence.show();
+  clarence.move();
 
 }
-    }
 
  public void keyPressed()
  {
   
-    if (keyCode == RIGHT) 
+    if(keyCode == RIGHT) 
       {clarence.rotate(24);}       
      else if(keyCode==LEFT)
      {clarence.rotate(-24);}   

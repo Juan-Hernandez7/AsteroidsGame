@@ -1,30 +1,24 @@
-public class Asteroid extends Floater
-{ 
-	private int spin;
-	public Asteroid()
-	{    
-		corners=8;
-		int[] xS={10,12,0,-9,-6,-13,14,7};
-		int[] yS={2,18,17,6,12,-5,-3,7};
-	xCorners = new int[corners];
-  yCorners = new int [corners];
-	xCorners = xS;
-  yCorners = yS;
-  myCenterX= (int)(Math.random()*1000);
-  myCenterY=(int)(Math.random()*1000);
-  myPointDirection=0;
-  myDirectionX=2;
-  myDirectionY=3;
-  myColor=255;
-  spin=(int)(Math.random()*11)-5;
-	}
-	public void move()
+class Bullets extends Floater
+{
+	public Bullets(SpaceShip theShip)
 	{
-		rotate(spin);
-	 super.move();
-   
+		
+		 myCenterX=theShip.getX();
+  myCenterY= theShip.getY();
+  myPointDirection= theShip.getPointDirection();
+  double dRadians=myPointDirection*(Math.PI/180); 
+  myDirectionX= 5*Math.cos(dRadians)+theShip.getDirectionX();
+  myDirectionY= 5*Math.cos(dRadians)+theShip.getDirectionY();
+  myColor=255;
+
 	}
- public void setX(int x){ myCenterX=x;} 
+	public void show()
+	{  
+		ellipse((float)myCenterX,(float)myCenterY,10,20);
+	
+		
+	}
+	 public void setX(int x){ myCenterX=x;} 
    public int getX(){return (int) myCenterX;}  
    public void setY(int y){myCenterY=y;}  
    public int getY(){return (int) myCenterY;}   
@@ -34,5 +28,4 @@ public class Asteroid extends Floater
    public double getDirectionY(){return (double) myDirectionY;}   
    public void setPointDirection(int degrees){myPointDirection=degrees;}   
    public double getPointDirection(){return (int) myPointDirection;} 
-
 }
