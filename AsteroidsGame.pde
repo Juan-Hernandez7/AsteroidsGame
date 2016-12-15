@@ -1,7 +1,7 @@
  SpaceShip clarence = new SpaceShip();
  Stars [] dots = new Stars [200];
  ArrayList <Asteroid> roids = new ArrayList <Asteroid>();
-  Arraylist <Bullets> joe= new Arraylist <Bullets>();//your variable declarations here
+ArrayList <Bullets> joe= new ArrayList <Bullets>();//your variable declarations here
 public void setup() 
 { 
    size(1000,1000);//your code here
@@ -9,13 +9,13 @@ public void setup()
   {  dots[i]= new Stars();}
 for(int nI=0; nI<20;nI++)
     {roids.add(new Asteroid());}
-
 }
 
 private float  tooClose;
 public void draw() 
 {  
   background(0);
+
    for(int i=0; i<dots.length; i++)
   {dots[i].show();}
 for(int nI=0; nI<roids.size();nI++)
@@ -23,6 +23,12 @@ for(int nI=0; nI<roids.size();nI++)
       roids.get(nI).show();
       roids.get(nI).move();
     }
+    for(int i=0; i<joe.size(); i++)
+    {
+       joe.get(i).show();
+  joe.get(i).move();
+    }
+
     for(int i=0; i<roids.size();i++)
     {
       tooClose = dist(clarence.getX(), clarence.getY(),roids.get(i).getX(),roids.get(i).getY());
@@ -32,11 +38,22 @@ for(int nI=0; nI<roids.size();nI++)
      roids.add(new Asteroid());
     }
   }
-  joe.show();
-  joe.move();
   clarence.show();
   clarence.move();
+  for(int nI=0; nI<roids.size();nI++)
+  {
+for(int i=0; i<joe.size(); i++)
+{
+ 
+  if(dist(joe.get(i).getX(), joe.get(i).getY(), roids.get(nI).getX(), roids.get(nI).getY()) < 30) 
+      { 
 
+        roids.remove(nI); 
+        joe.remove(i); 
+       break; 
+      } 
+}
+}
 }
 
  public void keyPressed()
@@ -47,7 +64,7 @@ for(int nI=0; nI<roids.size();nI++)
      else if(keyCode==LEFT)
      {clarence.rotate(-24);}   
    else if (keyCode==UP)
-    {clarence.accelerate(.7);}
+    {clarence.accelerate(.4);}
     else if (keyCode==DOWN)
       {
         clarence.setY((int)(Math.random()*900));
@@ -55,6 +72,10 @@ for(int nI=0; nI<roids.size();nI++)
         clarence.setDirectionX(0);
         clarence.setDirectionY(0);
         clarence.setPointDirection((int)(Math.random()*360));
+      }
+      else if(keyCode=='Q')
+      {
+          joe.add(new Bullets(clarence));
       }
 
  }
